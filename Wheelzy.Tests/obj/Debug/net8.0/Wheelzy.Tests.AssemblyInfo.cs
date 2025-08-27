@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Wheelzy.Tests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+914d4840d05297863eb1dde040774de6cedc232d")]
 [assembly: System.Reflection.AssemblyProductAttribute("Wheelzy.Tests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Wheelzy.Tests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

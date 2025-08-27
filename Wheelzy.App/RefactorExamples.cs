@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
 public class Invoice { public int? CustomerId { get; set; } public decimal Total { get; set; } }
-public class Customer { public int CustomerId { get; set; } public decimal Balance { get; set; } }
+public class Customer { public int CustomerId { get; set; } public string Name { get; set; } public decimal Balance { get; set; } }
 public class Order { public int OrderId { get; set; } public DateTime CreatedUtc { get; set; } public int CustomerId { get; set; }
     public Customer Customer { get; set; } public int StatusId { get; set; } public Status Status { get; set; } public bool IsActive { get; set; } public decimal Total { get; set; } }
 public class Status { public int StatusId { get; set; } public string Name { get; set; } }

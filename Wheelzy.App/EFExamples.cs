@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using WheelzyAssessment.Models;
+
 public class CarSummaryDTO
 {
     public int CarId { get; set; }
@@ -26,29 +27,27 @@ public class ExampleQueries
 
     public async Task<CarSummaryDTO> GetCarSummary(int carId)
     {
-        var q =
-            from c in db.Set<Car>().AsNoTracking()
-            join mk in db.Set<Make>()  on c.MakeId      equals mk.MakeId
-            join mo in db.Set<Model>() on c.ModelId     equals mo.ModelId
-            from sm in db.Set<SubModel>().Where(x => x.SubmodelId == c.SubmodelId).DefaultIfEmpty()
-            from cq in db.Set<Quote>().Where(x => x.CarId == c.CarId && x.IsCurrent).DefaultIfEmpty()
-            from cs in db.Set<Status>().Where(x => x.CarId == c.CarId && x.IsCurrent).DefaultIfEmpty()
-            from b  in db.Set<Buyer>().Where(x => cq != null && x.BuyerId == cq.BuyerId).DefaultIfEmpty()
-            from s  in db.Set<Status>().Where(x => cs != null && x.StatusId == cs.StatusId).DefaultIfEmpty()
-            where c.CarId == carId
-            select new CarSummaryDTO {
-                CarId = c.CarId,
-                Year = c.Year,
-                Make = mk.Name,
-                Model = mo.Name,
-                Submodel = sm != null ? sm.Name : null,
-                Zip = c.Zip,
-                CurrentBuyer = b != null ? b.Name : null,
-                CurrentQuote = cq != null ? cq.Amount : (decimal?)null,
-                CurrentStatus = s != null ? s.Name : null,
-                CurrentStatusDate = cs != null ? cs.StatusDate : (DateTime?)null
-            };
+           var q =
+        from c in db.Set<Car>().AsNoTracking()
+        join mk in db.Set<Make>() on c.MakeId equals mk.MakeId
+        join mo in db.Set<Model>() on c.ModelId equals mo.ModelId
+        from sm in db.Set<SubModel>().Where(x => x.SubmodelId == c.SubModelId).DefaultIfEmpty()
+        from cq in db.Set<Quote>().Where(x => x.CarId == c.CarId && x.IsCurrent).DefaultIfEmpty()
+        from cs in db.Set<Status>().Where(x => x.StatusId == c.CarId).DefaultIfEmpty() // Use the CarId to join directly
+        from b in db.Set<Buyer>().Where(x => cq != null && x.BuyerId == cq.BuyerId).DefaultIfEmpty()
+        select new CarSummaryDTO
+        {
+            CarId = c.CarId,
+            Make = mk.Name,
+            Model = mo.Name,
+            Submodel = sm != null ? sm.Name : null,
+            Zip = c.ZipCode, // Make sure to use ZipCode as per the Car class
+            CurrentBuyer = b != null ? b.Name : null,
+            CurrentQuote = cq != null ? cq.Amount : (decimal?)null,
+            CurrentStatus = cs != null ? cs.Name : null,  // Directly use Status here
+            //CurrentStatusDate = cs != null ? cs.StatusDate : (DateTime?)null // Correct date reference
+        };
 
-        return await q.SingleOrDefaultAsync();
-    }
+    return await q.SingleOrDefaultAsync();
+}
 }

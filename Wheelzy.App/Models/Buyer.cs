@@ -2,7 +2,7 @@ namespace WheelzyAssessment.Models;
 
 public class Buyer
 {
-    public int Id { get; set; }
+    public int BuyerId { get; set; }
     public string Name { get; set; } = string.Empty;
     public bool IsActive { get; set; } = true;
     
