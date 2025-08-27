@@ -1,0 +1,5 @@
+C:\Users\Khale\Downloads\wheelzy_assessment\Wheelzy.App\obj\Debug\net8.0\Wheelzy.App.csproj.AssemblyReference.cache
+C:\Users\Khale\Downloads\wheelzy_assessment\Wheelzy.App\obj\Debug\net8.0\Wheelzy.App.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Khale\Downloads\wheelzy_assessment\Wheelzy.App\obj\Debug\net8.0\Wheelzy.App.AssemblyInfoInputs.cache
+C:\Users\Khale\Downloads\wheelzy_assessment\Wheelzy.App\obj\Debug\net8.0\Wheelzy.App.AssemblyInfo.cs
+C:\Users\Khale\Downloads\wheelzy_assessment\Wheelzy.App\obj\Debug\net8.0\Wheelzy.App.csproj.CoreCompileInputs.cache
